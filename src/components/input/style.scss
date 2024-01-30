@@ -1,0 +1,15 @@
+@import "../../colors.scss";
+
+.input{
+    color: $textMediumColor;
+    border: 1px $mediumColor solid;
+    border-radius: 8px;
+    padding: 12px 8px;
+    background-color: $lightColor;
+    font-weight: 400;
+    font-size: 16px;
+
+    &:focus{
+        outline: none;
+    }
+}
