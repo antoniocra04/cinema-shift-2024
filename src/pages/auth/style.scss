@@ -1,0 +1,41 @@
+@import "../../colors.scss";
+
+.auth{
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+
+    .button{
+        margin: 16px 0px;
+    }
+}
+
+.auth__header-text{
+    margin: 0;
+}
+
+.auth__subtitle-text{
+    margin: 0;
+    font-size: 16px;
+}
+
+.auth__resend-text--disabled{
+    color: $mediumColor;
+    font-size: 14px;
+    margin: 0;
+}
+
+.auth__resend-text--enabled{
+    color: $darkColor;
+    font-size: 16px;
+    margin: 0;
+    align-self: center;
+    cursor: pointer;
+}
+
+.auth__input-error{
+    color: $error;
+    margin: -15px 0 0 0;
+    font-size: 12px;
+    font-weight: 700;
+}
