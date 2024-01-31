@@ -4,7 +4,7 @@ import { Input } from '../../components/input/indext'
 import "./style.scss"
 import { createOtpCode, signIn } from '../../api/auth'
 import { useEffect, useState } from 'react'
-import { useUserDispatch, useUserSelector } from '../../store/user/userHooks'
+import { useUserDispatch } from '../../store/user/userHooks'
 import { setToken } from '../../store/user/userSlice'
 
 export const AuthPage: React.FC = () => {
