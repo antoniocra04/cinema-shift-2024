@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
-import { FilmCard } from '../../components/filmCard';
-import { type Film, getAllFilms } from '../../api/films';
+import { FilmCard } from '@components/filmCard';
+import { type Film, getAllFilms } from '@api/films';
 import './style.scss';
 
 export const AfishaPage: React.FC = () => {

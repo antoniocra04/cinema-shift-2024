@@ -1,12 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import { Button } from '../../components/button';
-import { Input } from '../../components/input/indext';
-import './style.scss';
-import { createOtpCode, signIn } from '../../api/auth';
 import { useEffect, useState } from 'react';
-import { useUserDispatch } from '../../store/user/userHooks';
-import { setToken } from '../../store/user/userSlice';
+import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames';
+
+import { createOtpCode, signIn } from '@api/auth';
+
+import { useUserDispatch } from '@store/user/userHooks';
+import { setToken } from '@store/user/userSlice';
+
+import { Button } from '@ui/button';
+import { Input } from '@ui/input/indext';
+
+import './style.scss';
 
 export const AuthPage: React.FC = () => {
 	const [phone, setPhone] = useState<string>('');
@@ -28,11 +32,11 @@ export const AuthPage: React.FC = () => {
 
 	const createCode = useQuery({
 		queryKey: ['code'],
-		queryFn: async () => await createOtpCode(phone),
+		queryFn: async () => createOtpCode(phone),
 	});
 	const userAuth = useQuery({
 		queryKey: ['signin'],
-		queryFn: async () => await signIn(phone, parseInt(code)),
+		queryFn: async () => signIn(phone, parseInt(code)),
 	});
 
 	const sendCode = (): void => {

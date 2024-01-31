@@ -1,6 +1,6 @@
-import { StarRate } from '../starRate';
-import { Button } from '../button/index';
-import { BACKEND_URL } from '../../api/client';
+import { StarRate } from '@components/starRate';
+import { Button } from '@ui/button/index';
+import { BACKEND_URL } from '@api/client';
 import './style.scss';
 
 interface FilmCardProps {

@@ -1,5 +1,5 @@
-import './style.scss';
 import { useRating } from './hooks/useRating';
+import './style.scss';
 
 interface StarRateProps {
 	rating: number;
