@@ -1,7 +1,7 @@
-import type { ComponentProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import './style.scss';
 
-interface ButtonProps extends ComponentProps<'button'> {
+interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
 	children?: React.ReactNode;
 }
 

@@ -26,6 +26,7 @@
 			"@store/*": ["./src/store/*"],
 			"@ui/*": ["./src/ui/*"],
 			"@api/*": ["./src/api/*"],
+			"@hooks/*": ["./src/hooks/*"],
 		},
 	},
 	"include": ["src"],
