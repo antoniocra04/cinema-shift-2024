@@ -11,6 +11,14 @@ export interface Film {
 	userRatings: { kinopoisk: number };
 }
 
-export const getAllFilms = async () => {
-	return axiosClient.get('/cinema/today');
+interface GetAllFilmsDto {
+	data: {
+		success: boolean;
+		reason: string;
+		films: Film[];
+	};
+}
+
+export const getAllFilms = async (): Promise<GetAllFilmsDto> => {
+	return await axiosClient.get('/cinema/today');
 };

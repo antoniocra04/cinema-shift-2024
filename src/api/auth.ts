@@ -1,9 +1,31 @@
 import { axiosClient } from './client';
 
-export const createOtpCode = async (phone: string) => {
-	return axiosClient.post(`/auth/otp`, { phone });
+interface CreateOtpCodeDto {
+	success: boolean;
+	reason: string;
+	retryDelay: number;
+}
+
+interface signInDto {
+	data: {
+		success: boolean;
+		reason: string;
+		user: {
+			phone: number;
+			firstname: string;
+			middlename: string;
+			lastname: string;
+			email: string;
+			city: string;
+		};
+		token: string;
+	};
+}
+
+export const createOtpCode = async (phone: string): Promise<CreateOtpCodeDto> => {
+	return await axiosClient.post(`/auth/otp`, { phone });
 };
 
-export const signIn = async (phone: string, code: number) => {
-	return axiosClient.post(`/users/signin`, { phone, code });
+export const signIn = async (phone: string, code: number): Promise<signInDto> => {
+	return await axiosClient.post(`/users/signin`, { phone, code });
 };

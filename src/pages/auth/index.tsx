@@ -6,6 +6,7 @@ import { createOtpCode, signIn } from '../../api/auth';
 import { useEffect, useState } from 'react';
 import { useUserDispatch } from '../../store/user/userHooks';
 import { setToken } from '../../store/user/userSlice';
+import classNames from 'classnames';
 
 export const AuthPage: React.FC = () => {
 	const [phone, setPhone] = useState<string>('');
@@ -13,28 +14,29 @@ export const AuthPage: React.FC = () => {
 	const [timer, setTimer] = useState<number>(0);
 	const userDispatch = useUserDispatch();
 
-	const onPhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const resendCodeClass = classNames({
+		'auth__resend-text--disabled': timer > 0,
+		'auth__resend-text--enabled': timer === 0,
+	});
+
+	const onPhoneChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setPhone(e.target.value);
 	};
-	const onCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const onCodeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setCode(e.target.value);
 	};
 
 	const createCode = useQuery({
 		queryKey: ['code'],
-		queryFn: () => createOtpCode(phone),
-		refetchOnWindowFocus: false,
-		enabled: false,
+		queryFn: async () => await createOtpCode(phone),
 	});
 	const userAuth = useQuery({
 		queryKey: ['signin'],
-		queryFn: () => signIn(phone, parseInt(code)),
-		refetchOnWindowFocus: false,
-		enabled: false,
+		queryFn: async () => await signIn(phone, parseInt(code)),
 	});
 
-	const sendCode = () => {
-		if (timer == 0) {
+	const sendCode = (): void => {
+		if (timer === 0) {
 			createCode.refetch();
 			setTimer(120);
 		}
@@ -65,22 +67,17 @@ export const AuthPage: React.FC = () => {
 			<h1 className="auth__header-text">Авторизация</h1>
 			<p className="auth__subtitle-text">Введите номер телефона для входа в личный кабинет </p>
 			<Input placeholder="Телефон" onChange={onPhoneChange} />
-			{createCode.isSuccess ? <Input placeholder="Проверочный код" onChange={onCodeChange} /> : ''}
-			{createCode.isSuccess && userAuth.isError ? <p className="auth__input-error">Неверный код</p> : ''}
 			{createCode.isSuccess ? (
-				<Button text="Войти" onClick={userAuth.refetch} />
+				<>
+					<Input placeholder="Проверочный код" onChange={onCodeChange} />
+					{userAuth.isError ? <p className="auth__input-error">Неверный код</p> : ''}
+					<Button onClick={() => userAuth.refetch}>Войти</Button>
+					<p onClick={sendCode} className={resendCodeClass}>
+						Запросить код {timer > 0 ? `повторно можно через ${timer} секунд` : ''}{' '}
+					</p>
+				</>
 			) : (
-				<Button text="Продолжить" onClick={sendCode} />
-			)}
-			{createCode.isSuccess ? (
-				<p
-					onClick={sendCode}
-					className={`${timer > 0 ? 'auth__resend-text--disabled' : 'auth__resend-text--enabled'} `}
-				>
-					Запросить код {timer > 0 ? `повторно можно через ${timer} секунд` : ''}{' '}
-				</p>
-			) : (
-				''
+				<Button onClick={sendCode}>Продолжить</Button>
 			)}
 		</div>
 	);

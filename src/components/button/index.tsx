@@ -1,14 +1,14 @@
+import type { ComponentProps } from 'react';
 import './style.scss';
 
-interface IButton {
-	text: string;
-	onClick?: () => void;
+interface ButtonProps extends ComponentProps<'button'> {
+	children?: React.ReactNode;
 }
 
-export const Button: React.FC<IButton> = ({ text, onClick }) => {
+export const Button: React.FC<ButtonProps> = (props) => {
 	return (
-		<button className="button" onClick={onClick}>
-			{text}
+		<button {...props} className="button">
+			{props.children}
 		</button>
 	);
 };

@@ -1,4 +1,4 @@
-export const useRating = (rating: number): Array<number> => {
+export const useRating = (rating: number): number[] => {
 	const result = [0, 0, 0, 0, 0];
 	rating = Math.round(rating / 2);
 	for (let i = 0; i < 5; i++) {
