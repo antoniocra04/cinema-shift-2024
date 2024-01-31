@@ -1,12 +1,14 @@
-import "./style.scss"
+import './style.scss';
 
-interface IButton{
-    text: string;
-    onClick?: () => void;
+interface IButton {
+	text: string;
+	onClick?: () => void;
 }
 
-export const Button: React.FC<IButton> = ({text, onClick}) => {
-    return(
-        <button className="button" onClick={onClick}>{text}</button>
-    )
-}
+export const Button: React.FC<IButton> = ({ text, onClick }) => {
+	return (
+		<button className="button" onClick={onClick}>
+			{text}
+		</button>
+	);
+};
