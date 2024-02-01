@@ -1,4 +1,4 @@
-import { axiosClient } from './client';
+import { axiosClient } from '../client';
 
 export interface Film {
 	id: number;

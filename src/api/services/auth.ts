@@ -1,4 +1,4 @@
-import { axiosClient } from './client';
+import { axiosClient } from '../client';
 
 interface CreateOtpCodeDto {
 	success: boolean;
@@ -6,7 +6,7 @@ interface CreateOtpCodeDto {
 	retryDelay: number;
 }
 
-interface signInDto {
+interface SignInDto {
 	data: {
 		success: boolean;
 		reason: string;
@@ -26,6 +26,6 @@ export const createOtpCode = async (phone: string): Promise<CreateOtpCodeDto> =>
 	return await axiosClient.post(`/auth/otp`, { phone });
 };
 
-export const signIn = async (phone: string, code: number): Promise<signInDto> => {
+export const signIn = async (phone: string, code: number): Promise<SignInDto> => {
 	return await axiosClient.post(`/users/signin`, { phone, code });
 };

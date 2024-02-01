@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames';
 
-import { createOtpCode, signIn } from '@api/auth';
+import { createOtpCode, signIn } from '@api/services/auth';
 
 import { useUserDispatch } from '@store/user/userHooks';
 import { setToken } from '@store/user/userSlice';
