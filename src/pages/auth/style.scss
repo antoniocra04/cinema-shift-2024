@@ -1,4 +1,4 @@
-@import '@constants/colors.scss';
+@import '@constants/colors';
 
 .auth {
 	display: flex;
@@ -6,7 +6,7 @@
 	row-gap: 24px;
 
 	.button {
-		margin: 16px 0px;
+		margin: 16px 0;
 	}
 }
 
@@ -35,7 +35,7 @@
 
 .auth__input-error {
 	color: $error;
-	margin: -15px 0 0 0;
+	margin: -15px 0 0;
 	font-size: 12px;
 	font-weight: 700;
 }

@@ -12,7 +12,8 @@
 		"format": "npx prettier . --write",
 		"prepare": "husky && husky install",
 		"lint:write": "eslint --debug src/ --fix",
-		"lint-staged": "lint-staged --config .lintstagedrc"
+		"lint-staged": "lint-staged --config .lintstagedrc",
+		"stylelint": "npx stylelint **/*.scss --fix"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.1.0",
@@ -51,6 +52,8 @@
 		"lint-staged": "^15.2.1",
 		"path": "^0.12.7",
 		"prettier": "^3.2.4",
+		"stylelint": "^16.2.0",
+		"stylelint-config-standard-scss": "^13.0.0",
 		"typescript": "*",
 		"vite": "^5.0.8",
 		"vite-plugin-eslint": "^1.8.1",

@@ -1,4 +1,4 @@
-@import '@constants/colors.scss';
+@import '@constants/colors';
 
 .film-card {
 	width: 300px;
@@ -31,7 +31,7 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 5px 10px;
-	border-radius: 8px 0 0 0;
+	border-radius: 8px 0 0;
 }
 
 .cover__genre {
