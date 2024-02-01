@@ -17,7 +17,7 @@ import './style.scss';
 export const AuthPage: React.FC = () => {
 	const [phone, setPhone] = useState<string>('');
 	const [code, setCode] = useState<string>('');
-	const [timer, setTimer] = useTimer();
+	const [timer, setTimer] = useTimer(0);
 
 	const resendCodeClass = classNames({
 		'auth__resend-text--disabled': timer > 0,

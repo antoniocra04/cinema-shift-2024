@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-export const useTimer = (): [number, React.Dispatch<React.SetStateAction<number>>] => {
-	const [timer, setTimer] = useState<number>(0);
+export const useTimer = (time: number): [number, React.Dispatch<React.SetStateAction<number>>] => {
+	const [timer, setTimer] = useState<number>(time);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
