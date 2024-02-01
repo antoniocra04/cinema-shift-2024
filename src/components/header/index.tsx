@@ -1,3 +1,5 @@
+import { LoginIcon } from '../../assets/icons/LoginIcon';
+import { LogoutIcon } from '../../assets/icons/LogoutIcon';
 import { useUserSelector } from '../../store/user/userHooks';
 import './style.scss';
 
@@ -24,7 +26,11 @@ export const Header: React.FC = () => {
 					</ul>
 				</nav>
 				<button className="header__button">
-					<img src={token ? './login.svg' : './logout.svg'} alt="" className="button__image" />
+					{token ? (
+						<LoginIcon className="button__image" fill="#000000" />
+					) : (
+						<LogoutIcon className="button__image" fill="#000000" />
+					)}
 					<p className="button__text">{token ? 'Выйти' : 'Войти'}</p>
 				</button>
 			</div>
