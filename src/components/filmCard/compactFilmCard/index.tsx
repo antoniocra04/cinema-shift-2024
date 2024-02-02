@@ -9,13 +9,18 @@ export interface CompactFilmProps {
 	year: string;
 	title: string;
 	rating: number;
-	onClick: () => void;
+	onClick?: () => void;
 }
 
 export const CompactFilmCard: React.FC<CompactFilmProps> = ({ coverImageUrl, genre, year, title, rating, onClick }) => {
 	return (
 		<div className="film-card--compact">
-			<div className="film-card__cover--compact" style={{ backgroundImage: `url("${BACKEND_URL}${coverImageUrl}")` }}>
+			<div
+				className="film-card__cover--compact"
+				style={{
+					backgroundImage: `url("${BACKEND_URL}${coverImageUrl}")`,
+				}}
+			>
 				<div className="cover__info">
 					<p className="cover__genre">{genre}</p>
 					<p className="cover__location">{year}</p>

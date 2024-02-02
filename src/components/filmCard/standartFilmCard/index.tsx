@@ -9,7 +9,7 @@ export interface StandartFilmCardProps {
 	title: string;
 	rating: number;
 	subtitle: string;
-	onClick: () => void;
+	onClick?: () => void;
 }
 
 export const StandartFilmCard: React.FC<StandartFilmCardProps> = ({
@@ -22,7 +22,12 @@ export const StandartFilmCard: React.FC<StandartFilmCardProps> = ({
 }) => {
 	return (
 		<div className="film-card--standart">
-			<div className="film-card__cover--standart" style={{ backgroundImage: `url("${BACKEND_URL}${coverImageUrl}")` }}>
+			<div
+				className="film-card__cover--standart"
+				style={{
+					backgroundImage: `url("${BACKEND_URL}${coverImageUrl}")`,
+				}}
+			>
 				<div className="cover__info">
 					<p className="cover__genre">{genre}</p>
 					<p className="cover__location">{year}</p>

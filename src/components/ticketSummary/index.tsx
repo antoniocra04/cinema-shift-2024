@@ -1,9 +1,9 @@
-import { useTicketSelector } from '@store/tickets/ticketsHooks';
-import './style.scss';
 import { Button } from '@ui/button';
+import { useTypedSelector } from '@store/hooks/baseHooks';
+import './style.scss';
 
 export const TicketSummary: React.FC = () => {
-	const tickets = useTicketSelector((state) => state.tickets);
+	const tickets = useTypedSelector((state) => state.tickets);
 	return (
 		<div className="ticket-summary">
 			<div className="ticket-summary__order-info">
@@ -22,7 +22,8 @@ export const TicketSummary: React.FC = () => {
 			</div>
 			<div className="ticket-summary__order-info">
 				<p className="order-info__price">
-					Сумма:{tickets.places.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)} ₽
+					Сумма:
+					{tickets.places.reduce((accumulator, currentValue) => accumulator + currentValue.price, 0)} ₽
 				</p>
 			</div>
 			<div className="ticket-summary__order-info">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import './style.scss';
-import { useTicketSelector } from '@store/tickets/ticketsHooks';
 import { type PlaceType } from '@api/services/films';
+import { useTypedSelector } from '@store/hooks/baseHooks';
+import './style.scss';
 
 interface SeatProps {
 	index: number;
@@ -12,7 +12,7 @@ interface SeatProps {
 
 export const Seat: React.FC<SeatProps> = ({ index, onClick, type, price }) => {
 	const [active, setActive] = useState(false);
-	const ticket = useTicketSelector((state) => state.tickets);
+	const ticket = useTypedSelector((state) => state.tickets);
 
 	useEffect(() => {
 		setActive(false);

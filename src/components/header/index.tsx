@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import { LoginIcon } from '../../assets/icons/LoginIcon';
-import { LogoutIcon } from '../../assets/icons/LogoutIcon';
-import { useUserDispatch, useUserSelector } from '../../store/user/userHooks';
+import { LoginIcon } from '@icons/LoginIcon';
+import { LogoutIcon } from '@icons/LogoutIcon';
+import { useTypedSelector, useTypedDispatch } from '@store/hooks/baseHooks';
 import './style.scss';
 import { setToken } from '@store/user/userSlice';
 
 export const Header: React.FC = () => {
-	const tokenDispatch = useUserDispatch();
-	const token = useUserSelector((state) => state.user.token);
+	const tokenDispatch = useTypedDispatch();
+	const token = useTypedSelector((state) => state.user.token);
 
 	const onLogout = (): void => {
 		tokenDispatch(setToken(''));

@@ -17,7 +17,10 @@ interface TimePickerProps {
 }
 
 export const TimePicker: React.FC<TimePickerProps> = ({ data, onClick }) => {
-	const [active, setActive] = useState<{ hallIndex: number; index: number }>({ hallIndex: 0, index: 0 });
+	const [active, setActive] = useState<{
+		hallIndex: number;
+		index: number;
+	}>({ hallIndex: 0, index: 0 });
 	return (
 		<>
 			<div className="time-picker">

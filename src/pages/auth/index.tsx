@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames';
 
 import { createOtpCode, signIn } from '@api/services/auth';
 
-import { useUserDispatch } from '@store/user/userHooks';
+import { useTypedDispatch } from '@store/hooks/baseHooks';
 import { setToken } from '@store/user/userSlice';
 
 import { Button } from '@ui/button';
@@ -20,7 +20,7 @@ export const AuthPage: React.FC = () => {
 	const [phone, setPhone] = useState<string>('');
 	const [code, setCode] = useState<string>('');
 	const [timer, setTimer] = useTimer(0);
-	const userDispatch = useUserDispatch();
+	const userDispatch = useTypedDispatch();
 	const navigate = useNavigate();
 
 	const createCode = useQuery({

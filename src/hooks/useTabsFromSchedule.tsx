@@ -57,7 +57,14 @@ export const useTabsFromSchedule = (
 						time: seance.time,
 						content: (
 							<>
-								<h1 style={{ marginTop: '48px', marginBottom: '20px' }}>Выбор места</h1>
+								<h1
+									style={{
+										marginTop: '48px',
+										marginBottom: '20px',
+									}}
+								>
+									Выбор места
+								</h1>
 								<SeatPicker onClick={onSeatClick} data={seance.hall.places} />
 							</>
 						),

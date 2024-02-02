@@ -1,22 +1,36 @@
-import { getFilmById, getFilmScheduleById } from '@api/services/films';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+import { TicketSummary } from '@components/ticketSummary';
 import { FilmCard } from '@components/filmCard';
 import { PageLayout } from '@components/pageLayout';
 import { type Tab, Tabs } from '@components/tabs';
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
-import './style.scss';
+
+import { getFilmById, getFilmScheduleById } from '@api/services/films';
+
 import { useTabsFromSchedule } from '@hooks/useTabsFromSchedule';
-import { useEffect, useState } from 'react';
-import { useTicketDispatch } from '@store/tickets/ticketsHooks';
+
+import { useTypedDispatch } from '@store/hooks/baseHooks';
 import { clearPlaces, setDate, setTime } from '@store/tickets/ticketsSlice';
-import { TicketSummary } from '@components/ticketSummary';
+
+import './style.scss';
 
 export const FilmPage: React.FC = () => {
 	const { filmId } = useParams();
 	const [tabsDate, setTabsDate] = useState<Tab[]>({});
-	const film = useQuery({ queryKey: ['film'], queryFn: async () => getFilmById(filmId), enabled: true });
-	const schedule = useQuery({ queryKey: ['shedule'], queryFn: async () => getFilmScheduleById(filmId), enabled: true });
-	const dispatchTicket = useTicketDispatch();
+	const dispatchTicket = useTypedDispatch();
+
+	const film = useQuery({
+		queryKey: ['film'],
+		queryFn: async () => getFilmById(filmId),
+		enabled: true,
+	});
+	const schedule = useQuery({
+		queryKey: ['shedule'],
+		queryFn: async () => getFilmScheduleById(filmId),
+		enabled: true,
+	});
 
 	const onTabClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
 		dispatchTicket(setDate(e.currentTarget.innerText));

@@ -1,12 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
-import { FilmCard } from '@components/filmCard';
-import { type Film, getAllFilms } from '@api/services/films';
-import './style.scss';
-import { PageLayout } from '@components/pageLayout';
 import { useNavigate } from 'react-router-dom';
 
+import { type Film, getAllFilms } from '@api/services/films';
+
+import { PageLayout } from '@components/pageLayout';
+import { FilmCard } from '@components/filmCard';
+
+import './style.scss';
+
 export const AfishaPage: React.FC = () => {
-	const films = useQuery({ queryKey: ['films'], queryFn: getAllFilms, enabled: true });
+	const films = useQuery({
+		queryKey: ['films'],
+		queryFn: getAllFilms,
+		enabled: true,
+	});
 	const navigate = useNavigate();
 	return (
 		<PageLayout>
