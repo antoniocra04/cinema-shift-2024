@@ -2,26 +2,37 @@ import { useQuery } from '@tanstack/react-query';
 import { FilmCard } from '@components/filmCard';
 import { type Film, getAllFilms } from '@api/services/films';
 import './style.scss';
+import { PageLayout } from '@components/pageLayout';
+import { useNavigate } from 'react-router-dom';
 
 export const AfishaPage: React.FC = () => {
 	const films = useQuery({ queryKey: ['films'], queryFn: getAllFilms, enabled: true });
+	const navigate = useNavigate();
 	return (
-		<div className="afisha">
-			<h1 className="afisha__header-text">Афиша</h1>
-			<div className="afisha__card-container">
-				{films.isSuccess
-					? films.data.data.films.map((film: Film) => (
-							<FilmCard
-								coverImageUrl={film.img}
-								genre={film.genres[0]}
-								year={film.releaseDate}
-								title={film.name}
-								rating={film.userRatings.kinopoisk}
-								key={film.id}
-							/>
-						))
-					: ''}
+		<PageLayout>
+			<div className="afisha">
+				<h1 className="afisha__header-text">Афиша</h1>
+				<div className="afisha__card-container">
+					{films.isSuccess
+						? films.data.data.films.map((film: Film) => (
+								<FilmCard
+									key={film.id}
+									variant="compact"
+									data={{
+										coverImageUrl: film.img,
+										genre: film.genres[0],
+										year: film.releaseDate,
+										title: film.name,
+										rating: film.userRatings.kinopoisk,
+										onClick: () => {
+											navigate(`/film/${film.id}`);
+										},
+									}}
+								/>
+							))
+						: ''}
+				</div>
 			</div>
-		</div>
+		</PageLayout>
 	);
 };
