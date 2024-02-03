@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthPage } from './pages/auth';
 import { AfishaPage } from './pages/afisha';
 import { FilmPage } from './pages/film';
+import { TicketsPage } from './pages/tickets';
 
 const router = createBrowserRouter([
 	{
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
 	{
 		path: 'film/:filmId',
 		element: <FilmPage />,
+	},
+	{
+		path: 'tickets',
+		element: <TicketsPage />,
 	},
 ]);
 
