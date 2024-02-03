@@ -21,12 +21,12 @@ export const Header: React.FC = () => {
 					</Link>
 					<ul className="header__menu-list">
 						<li className="header__menu-item">
-							<Link to={'/profile'} className="header__menu-link">
+							<Link to={token ? '/profile' : '/'} className="header__menu-link">
 								Профиль
 							</Link>
 						</li>
 						<li className="header__menu-item">
-							<Link to={'/tickets'} className="header__menu-link">
+							<Link to={token ? '/tickets' : '/'} className="header__menu-link">
 								Билеты
 							</Link>
 						</li>
