@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { App } from './App.tsx';
-import './index.scss';
 import { Provider } from 'react-redux';
 import { store } from './store/index.ts';
+import './index.scss';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -12,6 +12,7 @@ const queryClient = new QueryClient({
 			refetchOnWindowFocus: false,
 			enabled: false,
 			retry: false,
+			gcTime: 0,
 		},
 	},
 });

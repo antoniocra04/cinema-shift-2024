@@ -1,4 +1,4 @@
-import { useRating } from '@hooks/useRating';
+import { formatRating } from '../../utils/formatRating';
 import './style.scss';
 
 interface StarRateProps {
@@ -6,7 +6,7 @@ interface StarRateProps {
 }
 
 export const StarRate: React.FC<StarRateProps> = ({ rating }) => {
-	const stars = useRating(rating);
+	const stars = formatRating(rating);
 
 	return (
 		<div className="star-rate">

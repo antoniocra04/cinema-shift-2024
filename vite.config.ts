@@ -13,6 +13,8 @@ export default defineConfig({
 			'@ui': path.resolve(__dirname, './src/ui'),
 			'@api': path.resolve(__dirname, './src/api'),
 			'@hooks': path.resolve(__dirname, './src/hooks'),
+			'@icons': path.resolve(__dirname, './src/icons'),
+			'@utils': path.resolve(__dirname, './src/utils'),
 		},
 	},
 });

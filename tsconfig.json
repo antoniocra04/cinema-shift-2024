@@ -27,6 +27,8 @@
 			"@ui/*": ["./src/ui/*"],
 			"@api/*": ["./src/api/*"],
 			"@hooks/*": ["./src/hooks/*"],
+			"@icons/*": ["./src/icons/*"],
+			"@utils/*": ["./src/utils/*"],
 		},
 	},
 	"include": ["src"],

@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { AuthPage } from './pages/auth';
-import { Header } from './components/header';
 import { AfishaPage } from './pages/afisha';
+import { FilmPage } from './pages/film';
 
 const router = createBrowserRouter([
 	{
@@ -12,15 +12,12 @@ const router = createBrowserRouter([
 		path: 'afisha',
 		element: <AfishaPage />,
 	},
+	{
+		path: 'film/:filmId',
+		element: <FilmPage />,
+	},
 ]);
 
 export const App: React.FC = () => {
-	return (
-		<>
-			<Header />
-			<div className="page-content">
-				<RouterProvider router={router} />
-			</div>
-		</>
-	);
+	return <RouterProvider router={router} />;
 };

@@ -3,6 +3,6 @@ import './style.scss';
 
 interface InputProps extends ComponentProps<'input'> {}
 
-export const Input: React.FC<InputProps> = ({ placeholder, onChange }) => {
-	return <input type="text" className="input" onChange={onChange} placeholder={placeholder} />;
+export const Input: React.FC<InputProps> = (props) => {
+	return <input type="text" className="input" {...props} />;
 };

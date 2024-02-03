@@ -19,6 +19,43 @@ interface GetAllFilmsDto {
 	};
 }
 
+export enum PlaceType {
+	BLOCKED = 'BLOCKED',
+	ECONOM = 'ECONOM',
+	COMFORT = 'COMFORT',
+}
+
+export interface Place {
+	index: number;
+	price: number;
+	type: PlaceType;
+}
+
+export interface Seance {
+	time: string;
+	hall: {
+		name: string;
+		places: Place[][];
+	};
+}
+
+export interface Schedule {
+	date: string;
+	seances: Seance[];
+}
+
+interface GetFilmScheduleById {
+	schedules: Schedule[];
+}
+
 export const getAllFilms = async (): Promise<GetAllFilmsDto> => {
-	return await axiosClient.get('/cinema/today');
+	return axiosClient.get('/cinema/today');
+};
+
+export const getFilmById = async (filmId: number): Promise<{ data: { film: Film } }> => {
+	return axiosClient.get(`/cinema/film/${filmId}`);
+};
+
+export const getFilmScheduleById = async (filmId: number): Promise<{ data: GetFilmScheduleById }> => {
+	return axiosClient.get(`/cinema/film/${filmId}/schedule`);
 };
